@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechAbout — Client Requirement Analyzer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .card { @apply bg-white rounded-xl shadow-sm border border-slate-200; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <!-- Header -->
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-5 flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">TechAbout</h1>
+        <p class="text-slate-400 text-sm">Client Requirement Analyzer</p>
+      </div>
+      <a href="https://www.techabout.com" target="_blank" class="text-sm text-slate-300 hover:text-white transition">
+        techabout.com →
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <!-- Input -->
+    <section class="card p-6 mb-8">
+      <h2 class="text-lg font-semibold mb-1">Paste project brief</h2>
+      <p class="text-slate-500 text-sm mb-4">
+        The system extracts requirements, risks, clarifying questions and maps the brief to TechAbout service areas.
+      </p>
+      <textarea
+        id="brief"
+        rows="10"
+        class="w-full border border-slate-300 rounded-lg p-4 text-sm focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-transparent resize-y"
+        placeholder="Example: We need a multi-tenant inventory SaaS with offline-first mobile apps for warehouse staff, real-time sync, role-based access, and integration with our existing ERP. Target go-live in 6 months..."
+      ></textarea>
+      <div class="mt-4 flex items-center gap-3">
+        <button
+          id="analyzeBtn"
+          onclick="runAnalysis()"
+          class="bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 transition disabled:opacity-50"
+        >
+          Analyze Brief
+        </button>
+        <button
+          onclick="loadSample()"
+          class="text-sm text-slate-600 hover:text-slate-900 underline"
+        >
+          Load sample brief
+        </button>
+        <span id="status" class="text-sm text-slate-500"></span>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="hidden space-y-6">
+      <!-- Summary -->
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-slate-900">Executive Summary</h3>
+          <span id="modeBadge" class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-600"></span>
+        </div>
+        <p id="summary" class="text-slate-700 leading-relaxed"></p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Requirements -->
+        <div class="card p-6">
+          <h3 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Requirements
+          </h3>
+          <ul id="requirements" class="space-y-2 text-sm text-slate-700 list-disc list-inside"></ul>
+        </div>
+
+        <!-- Risks -->
+        <div class="card p-6">
+          <h3 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            Risks
+          </h3>
+          <ul id="risks" class="space-y-2 text-sm text-slate-700 list-disc list-inside"></ul>
+        </div>
+      </div>
+
+      <!-- Clarifying Questions -->
+      <div class="card p-6">
+        <h3 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+          Clarifying Questions
+        </h3>
+        <ol id="questions" class="space-y-2 text-sm text-slate-700 list-decimal list-inside"></ol>
+      </div>
+
+      <!-- Suggested Services -->
+      <div class="card p-6">
+        <h3 class="font-semibold text-slate-900 mb-4">Suggested TechAbout Service Areas</h3>
+        <div id="services" class="space-y-3"></div>
+      </div>
+
+      <!-- Raw JSON -->
+      <details class="card p-6">
+        <summary class="font-medium text-sm text-slate-600 cursor-pointer">View raw JSON</summary>
+        <pre id="rawJson" class="mt-3 text-xs bg-slate-50 p-4 rounded-lg overflow-x-auto"></pre>
+      </details>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 mt-16 py-6 text-center text-sm text-slate-500">
+    Built for TechAbout · Task ZR-26-00717 · Not an official TechAbout product
+  </footer>
+
+  <script>
+    const SAMPLE = `We are a mid-size logistics company looking to replace our fragmented inventory and warehouse management tools with a modern multi-tenant SaaS platform. Warehouse staff need offline-capable mobile apps (Android + iOS) that sync when connectivity returns. We also need real-time inventory visibility for our sales team via a web dashboard, role-based access control, and deep integration with our existing SAP ERP and Salesforce CRM. Compliance with SOC 2 is important because we handle client shipment data. Target launch is Q3 next year with an initial pilot for 3 warehouses (approx 80 concurrent users). Budget is flexible but we prefer a fixed-price phase 1.`;
+
+    function loadSample() {
+      document.getElementById('brief').value = SAMPLE;
+    }
+
+    async function runAnalysis() {
+      const brief = document.getElementById('brief').value.trim();
+      if (brief.length < 10) {
+        alert('Please enter a longer project brief (at least 10 characters).');
+        return;
+      }
+
+      const btn = document.getElementById('analyzeBtn');
+      const status = document.getElementById('status');
+      btn.disabled = true;
+      status.textContent = 'Analysing…';
+
+      try {
+        const res = await fetch('/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ brief }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.detail || 'Analysis failed');
+        }
+
+        const data = await res.json();
+        renderResults(data);
+        status.textContent = 'Done';
+      } catch (e) {
+        status.textContent = 'Error: ' + e.message;
+        console.error(e);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function renderResults(data) {
+      document.getElementById('results').classList.remove('hidden');
+      document.getElementById('summary').textContent = data.summary || '—';
+      document.getElementById('modeBadge').textContent = data.mode === 'llm' ? 'LLM mode' : 'Keyword fallback';
+
+      const fillList = (id, items) => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        (items || []).forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          el.appendChild(li);
+        });
+        if (!items || items.length === 0) {
+          el.innerHTML = '<li class="text-slate-400">None extracted</li>';
+        }
+      };
+
+      fillList('requirements', data.requirements);
+      fillList('risks', data.risks);
+      fillList('questions', data.clarifying_questions);
+
+      const servicesEl = document.getElementById('services');
+      servicesEl.innerHTML = '';
+      (data.suggested_services || []).forEach(s => {
+        const confColor = {
+          high: 'bg-emerald-100 text-emerald-800',
+          medium: 'bg-amber-100 text-amber-800',
+          low: 'bg-slate-100 text-slate-600',
+        }[s.confidence] || 'bg-slate-100 text-slate-600';
+
+        const div = document.createElement('div');
+        div.className = 'border border-slate-200 rounded-lg p-4';
+        div.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h4 class="font-medium text-slate-900">${s.service}</h4>
+              <p class="text-sm text-slate-600 mt-1">${s.explanation}</p>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${confColor}">${s.confidence}</span>
+          </div>
+        `;
+        servicesEl.appendChild(div);
+      });
+
+      document.getElementById('rawJson').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>

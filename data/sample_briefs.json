@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "title": "Multi-tenant inventory SaaS + offline mobile",
+    "category": "enterprise",
+    "brief": "We are a mid-size logistics company looking to replace our fragmented inventory and warehouse management tools with a modern multi-tenant SaaS platform. Warehouse staff need offline-capable mobile apps (Android + iOS) that sync when connectivity returns. We also need real-time inventory visibility for our sales team via a web dashboard, role-based access control, and deep integration with our existing SAP ERP and Salesforce CRM. Compliance with SOC 2 is important because we handle client shipment data. Target launch is Q3 next year with an initial pilot for 3 warehouses (approx 80 concurrent users). Budget is flexible but we prefer a fixed-price phase 1."
+  },
+  {
+    "id": 2,
+    "title": "RAG chatbot for internal knowledge base",
+    "category": "ai-ml",
+    "brief": "Our company has 15 years of product documentation, support tickets and internal wikis scattered across Confluence, Google Drive and Zendesk. We want a secure internal AI assistant that employees can ask questions and get accurate answers grounded only in our own data. Must run in our AWS VPC, no data leaving the environment. Prefer open-source models if possible. Roughly 2,000 employees."
+  },
+  {
+    "id": 3,
+    "title": "WordPress to Next.js migration (Express scale)",
+    "category": "express",
+    "brief": "We have a marketing site currently on WordPress (about 40 pages + blog). We want to migrate it to Next.js for better performance and Core Web Vitals. Need content migration, SEO-safe redirects, analytics setup and a clean hand-over. Prefer fixed price."
+  },
+  {
+    "id": 4,
+    "title": "Shopify store launch",
+    "category": "express",
+    "brief": "New D2C brand selling skincare. Need a complete Shopify store: product catalog (initially 25 SKUs), payment gateway (Stripe + local methods), shipping rules, basic theme customisation, mobile-ready design and Google Analytics. Launch in 3 weeks."
+  },
+  {
+    "id": 5,
+    "title": "Legacy ERP modernisation",
+    "category": "digital-transformation",
+    "brief": "We run a 12-year-old on-premise ERP written in Delphi that is no longer maintainable. We need a modern cloud-based replacement covering finance, inventory, purchasing and basic CRM. Prefer phased migration rather than big-bang. Approximately 120 users across 4 countries. Data residency in EU required."
+  },
+  {
+    "id": 6,
+    "title": "Computer vision for quality inspection",
+    "category": "ai-ml",
+    "brief": "Manufacturing plant wants to automate visual quality inspection on the production line. Currently 8 human inspectors. Goal is to detect surface defects on metal parts at 60 units per minute. We already have cameras and some labelled images (approx 8k). Need model training, edge deployment and integration with our MES."
+  },
+  {
+    "id": 7,
+    "title": "Kubernetes platform & CI/CD",
+    "category": "cloud-devops",
+    "brief": "Our engineering team of 25 has outgrown Heroku. We want a production-grade Kubernetes platform on AWS (EKS), with GitOps (ArgoCD or Flux), observability (Prometheus + Grafana), and a clear cost-control strategy. Prefer infrastructure-as-code with Terraform. Need training for our team as part of the engagement."
+  },
+  {
+    "id": 8,
+    "title": "SOC 2 Type II readiness",
+    "category": "cybersecurity",
+    "brief": "SaaS startup preparing for Series A. Investors require SOC 2 Type II. We need gap assessment, policy writing, technical control implementation (logging, access control, encryption, vendor management) and support through the audit. Current stack: AWS, React, Node.js, Postgres."
+  },
+  {
+    "id": 9,
+    "title": "Field service mobile app",
+    "category": "enterprise-mobile",
+    "brief": "HVAC company with 90 field technicians. Need a mobile app that works offline in basements and rural areas, allows job check-in/out, photo capture, parts usage, customer signature, and syncs back to our FieldAware system when online. iOS + Android. Prefer Flutter or React Native."
+  },
+  {
+    "id": 10,
+    "title": "Data warehouse & executive dashboards",
+    "category": "data-analytics",
+    "brief": "Retail group with 40 stores + e-commerce. Data currently lives in Shopify, POS systems, Google Analytics and Excel. We need a modern data warehouse (BigQuery or Snowflake), nightly pipelines, and a set of executive dashboards covering sales, inventory turns, and customer cohorts. Prefer dbt + Looker or Metabase."
+  },
+  {
+    "id": 11,
+    "title": "Blockchain supply-chain provenance",
+    "category": "blockchain",
+    "brief": "Luxury goods brand wants to offer customers a way to verify authenticity and provenance of each product. Considering a private or consortium blockchain with QR codes on packaging. Need smart contract design, wallet experience for customers, and integration with our existing ERP for batch data."
+  },
+  {
+    "id": 12,
+    "title": "Website malware cleanup (Express)",
+    "category": "express",
+    "brief": "Our WordPress site was hacked last night. Google flagged it as unsafe. Need emergency malware removal, blacklist recovery, hardening and a short report of what happened. Prefer same-day or next-day turnaround."
+  },
+  {
+    "id": 13,
+    "title": "Multi-brand headless commerce",
+    "category": "saas-platforms",
+    "brief": "We operate 7 fashion brands under one holding company. Want a headless commerce platform where each brand has its own storefront (Next.js) but shares inventory, customer accounts and fulfilment. Need multi-tenant architecture, shared cart service, and a central admin console."
+  },
+  {
+    "id": 14,
+    "title": "IoT cold-chain monitoring",
+    "category": "iot",
+    "brief": "Pharmaceutical distributor needs real-time temperature and humidity monitoring for 200 refrigerated vehicles and 12 warehouses. Sensors already selected (MQTT capable). Need secure ingestion, alerting rules, historical dashboards and integration with our existing TMS."
+  },
+  {
+    "id": 15,
+    "title": "Test automation suite for fintech app",
+    "category": "qa-automation",
+    "brief": "We have a React + Node.js banking app with ~180 critical user journeys. Manual regression takes 9 days. Need a robust test automation suite (Playwright or Cypress) covering UI, API and key payment flows, plus CI integration and a small team training session."
+  },
+  {
+    "id": 16,
+    "title": "Very short / vague brief",
+    "category": "edge",
+    "brief": "Need a website and maybe an app. Something modern. Can you help?"
+  },
+  {
+    "id": 17,
+    "title": "Pure marketing fluff",
+    "category": "edge",
+    "brief": "We are looking for a visionary technology partner who can transform our digital landscape and unlock exponential growth through cutting-edge solutions and synergistic innovation across the value chain."
+  },
+  {
+    "id": 18,
+    "title": "Non-English brief (Urdu mixed)",
+    "category": "edge",
+    "brief": "Humein ek e-commerce website chahiye Shopify pe. Products 50 hain, payment gateway local chahiye (JazzCash, EasyPaisa), aur mobile pe acha dikhna chahiye. Delivery 4 weeks mein."
+  },
+  {
+    "id": 19,
+    "title": "Healthcare patient portal",
+    "category": "enterprise",
+    "brief": "Private hospital group wants a patient portal: appointment booking, lab results, prescription refill requests, and secure messaging with doctors. Must be HIPAA-aware (we are evaluating US expansion) and integrate with our existing Epic EMR via FHIR. Roughly 40,000 active patients."
+  },
+  {
+    "id": 20,
+    "title": "AdSense approval rescue",
+    "category": "express",
+    "brief": "Our content site keeps getting rejected by Google AdSense. Need a full audit of content, navigation, policy compliance, technical issues and a concrete fix plan so we can re-apply successfully."
+  },
+  {
+    "id": 21,
+    "title": "Internal process automation",
+    "category": "digital-transformation",
+    "brief": "HR and Finance still rely on email + Excel for leave requests, expense claims and vendor onboarding. Want to replace this with modern workflow tools (or custom) that include approvals, audit trails and basic reporting. Around 300 employees."
+  },
+  {
+    "id": 22,
+    "title": "Cross-platform MVP for marketplace",
+    "category": "web-mobile",
+    "brief": "Building a two-sided marketplace for freelance designers and clients. Need MVP web app + mobile apps (Flutter preferred) covering profiles, project posting, proposals, messaging, basic escrow payments and reviews. Timeline 4 months, seed-funded."
+  },
+  {
+    "id": 23,
+    "title": "Cloud cost optimisation",
+    "category": "cloud-devops",
+    "brief": "Monthly AWS bill jumped from $18k to $47k in 5 months with no corresponding traffic growth. Need a cost review, rightsizing recommendations, reserved instance / savings plan strategy, and a lightweight FinOps dashboard so we can keep costs under control going forward."
+  },
+  {
+    "id": 24,
+    "title": "Document intelligence for contracts",
+    "category": "ai-ml",
+    "brief": "Law firm receives 300+ contracts per month in PDF/Word. Want an AI system that extracts key clauses (termination, liability, governing law, payment terms), flags non-standard language, and routes to the right partner for review. Prefer private deployment."
+  },
+  {
+    "id": 25,
+    "title": "Empty / minimal",
+    "category": "edge",
+    "brief": "hi"
+  },
+  {
+    "id": 26,
+    "title": "Large enterprise multi-workstream",
+    "category": "enterprise",
+    "brief": "Global retailer (14 countries) wants a 3-year digital transformation programme covering: (1) unified commerce platform, (2) AI-powered demand forecasting, (3) modern data platform, (4) store associate mobile tools, and (5) cybersecurity uplift to ISO 27001. Prefer a partner who can run discovery across all workstreams and then staff dedicated squads. Budget range $2-4M for year 1."
+  },
+  {
+    "id": 27,
+    "title": "Simple landing page (Express)",
+    "category": "express",
+    "brief": "Need a high-converting landing page for a new SaaS product launch. One page, clear CTA, form that posts to HubSpot, mobile-first, fast. Prefer fixed price and delivery within 5 business days."
+  }
+]
